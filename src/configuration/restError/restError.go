@@ -1,11 +1,11 @@
-package rest_error
+package restError
 
 import "net/http"
 
 type RestErr struct {
 	Message string   `json:"message"`
 	Err     string   `json:"error"`
-	Status  int64    `json:"status"`
+	Status  int      `json:"status"`
 	Causes  []Causes `json:"causes"`
 }
 
@@ -18,7 +18,7 @@ func (r *RestErr) Error() string {
 	return r.Message
 }
 
-func NewRestErr(message, err string, status int64, causes []Causes) *RestErr {
+func NewRestErr(message, err string, status int, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     err,
@@ -30,7 +30,7 @@ func NewRestErr(message, err string, status int64, causes []Causes) *RestErr {
 func NewBadRequestError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
-		Err:     "Bad Request",
+		Err:     "bad_request",
 		Status:  http.StatusBadRequest,
 	}
 }
@@ -38,7 +38,7 @@ func NewBadRequestError(message string) *RestErr {
 func NewRequestValidationError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
-		Err:     "Bad Request",
+		Err:     "bad_request",
 		Status:  http.StatusBadRequest,
 		Causes:  causes,
 	}
@@ -47,15 +47,15 @@ func NewRequestValidationError(message string, causes []Causes) *RestErr {
 func NewInternalServerError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
-		Err:     "Internal Server Error",
+		Err:     "internal_server_error",
 		Status:  http.StatusInternalServerError,
 	}
 }
 
-func NewNotFoundError(message string, causes []Causes) *RestErr {
+func NewNotFoundError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
-		Err:     "Not Found",
+		Err:     "not_found",
 		Status:  http.StatusNotFound,
 	}
 }
@@ -63,7 +63,7 @@ func NewNotFoundError(message string, causes []Causes) *RestErr {
 func NewUnauthorizedError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
-		Err:     "Not Authorized",
+		Err:     "unathorized",
 		Status:  http.StatusUnauthorized,
 	}
 }
