@@ -27,7 +27,7 @@ func NewRestErr(message, err string, status int, causes []Causes) *RestErr {
 	}
 }
 
-func NewBadRequestError(message string) *RestErr {
+func ThrowBadRequestError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "bad_request",
@@ -35,7 +35,7 @@ func NewBadRequestError(message string) *RestErr {
 	}
 }
 
-func NewRequestValidationError(message string, causes []Causes) *RestErr {
+func ThrowRequestValidationError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "bad_request",
@@ -44,7 +44,7 @@ func NewRequestValidationError(message string, causes []Causes) *RestErr {
 	}
 }
 
-func NewInternalServerError(message string, causes []Causes) *RestErr {
+func ThrowInternalServerError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "internal_server_error",
@@ -52,7 +52,7 @@ func NewInternalServerError(message string, causes []Causes) *RestErr {
 	}
 }
 
-func NewNotFoundError(message string) *RestErr {
+func ThrowNotFoundError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "not_found",
@@ -60,7 +60,7 @@ func NewNotFoundError(message string) *RestErr {
 	}
 }
 
-func NewUnauthorizedError(message string, causes []Causes) *RestErr {
+func ThrowUnauthorizedError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "unathorized",

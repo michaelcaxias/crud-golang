@@ -6,7 +6,7 @@ import (
 )
 
 func UpdateUser(context *gin.Context) {
-	err := restError.NewNotFoundError("Usuário não encontrado")
+	err := restError.ThrowNotFoundError("Usuário não encontrado")
 
 	context.JSON(err.Status, err)
 }
