@@ -1,4 +1,4 @@
-package restError
+package rest_error
 
 import "net/http"
 
