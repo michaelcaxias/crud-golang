@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/michaelcaxias/crud-golang/src/controller/routes"
 )
 
 func main() {
@@ -17,5 +18,8 @@ func main() {
 	fmt.Println(os.Getenv("KEY"))
 
 	router := gin.Default()
+
+	routes.InitRoutes(&router.RouterGroup)
+
 	router.Run()
 }
