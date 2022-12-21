@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	Validate = validator.New()
+	Validate  = validator.New()
 	translate universalTranslator.Translator
 )
 
@@ -31,21 +31,21 @@ func ValidateUserError(validation_error error) *rest_error.RestErr {
 	var jsonValidationError validator.ValidationErrors
 
 	if errors.As(validation_error, &jsonErr) {
-		return rest_error.ThrowBadRequestError("Campo do tipo inválido")
+		return rest_error.ThrowBadRequestError("Invalid type field")
 	} else if errors.As(validation_error, &jsonValidationError) {
 		errorsCauses := []rest_error.Causes{}
 
 		for _, err := range validation_error.(validator.ValidationErrors) {
 			cause := rest_error.Causes{
 				Message: err.Translate(translate),
-				Field: err.Field(),
+				Field:   err.Field(),
 			}
 
 			errorsCauses = append(errorsCauses, cause)
 		}
 
-		return rest_error.ThrowRequestValidationError("Campos estão inválidos", errorsCauses)
+		return rest_error.ThrowRequestValidationError("Invalid fields", errorsCauses)
 	} else {
-		return rest_error.ThrowBadRequestError("Erro ao tentar converter campos")
+		return rest_error.ThrowBadRequestError("Error trying to convert fields")
 	}
 }

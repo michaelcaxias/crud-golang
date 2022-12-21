@@ -6,7 +6,7 @@ import (
 )
 
 func DeleteUser(context *gin.Context) {
-	err := rest_error.ThrowNotFoundError("Usuário não encontrado")
+	err := rest_error.ThrowNotFoundError("User not found")
 
 	context.JSON(err.Status, err)
 }

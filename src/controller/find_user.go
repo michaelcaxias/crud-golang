@@ -6,13 +6,13 @@ import (
 )
 
 func FindUserByID(context *gin.Context) {
-	err := rest_error.ThrowNotFoundError("Usuário não encontrado")
+	err := rest_error.ThrowNotFoundError("User not found")
 
 	context.JSON(err.Status, err)
 }
 
 func FindAllUsers(context *gin.Context) {
-	err := rest_error.ThrowNotFoundError("Usuários não encontrados")
+	err := rest_error.ThrowNotFoundError("Users not found")
 
 	context.JSON(err.Status, err)
 }
