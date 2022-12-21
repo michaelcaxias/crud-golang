@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
@@ -14,4 +15,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 	fmt.Println(os.Getenv("KEY"))
+
+	router := gin.Default()
+	router.Run()
 }
