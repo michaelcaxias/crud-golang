@@ -17,7 +17,7 @@ func main() {
 	}
 	fmt.Println(os.Getenv("KEY"))
 
-	router := gin.Default()
+	router := gin.Default() 
 
 	routes.InitRoutes(&router.RouterGroup)
 
