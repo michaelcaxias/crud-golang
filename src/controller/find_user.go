@@ -2,17 +2,17 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/michaelcaxias/crud-golang/src/configuration/restError"
+	"github.com/michaelcaxias/crud-golang/src/configuration/rest_error"
 )
 
 func FindUserByID(context *gin.Context) {
-	err := restError.ThrowNotFoundError("Usuário não encontrado")
+	err := rest_error.ThrowNotFoundError("Usuário não encontrado")
 
 	context.JSON(err.Status, err)
 }
 
 func FindAllUsers(context *gin.Context) {
-	err := restError.ThrowNotFoundError("Usuários não encontrados")
+	err := rest_error.ThrowNotFoundError("Usuários não encontrados")
 
 	context.JSON(err.Status, err)
 }
